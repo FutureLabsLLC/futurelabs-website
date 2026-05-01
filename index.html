@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
   :root {
     --bg: #080c12;
     --bg2: #0d1420;
@@ -25,9 +25,9 @@
     --serif: 'Cormorant Garamond', Georgia, serif;
     --mono: 'DM Mono', 'Courier New', monospace;
   }
- 
+
   html { scroll-behavior: smooth; }
- 
+
   body {
     background: var(--bg);
     color: var(--text);
@@ -36,7 +36,7 @@
     line-height: 1.7;
     overflow-x: hidden;
   }
- 
+
   body::before {
     content: '';
     position: fixed;
@@ -49,7 +49,7 @@
     pointer-events: none;
     z-index: 0;
   }
- 
+
   /* NAV */
   nav {
     position: sticky;
@@ -63,16 +63,16 @@
     border-bottom: 1px solid var(--border);
     backdrop-filter: blur(8px);
   }
- 
+
   .nav-logo {
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none;
   }
- 
+
   .nav-logo svg { flex-shrink: 0; }
- 
+
   .nav-logo-text {
     font-family: var(--serif);
     font-size: 18px;
@@ -80,15 +80,15 @@
     color: var(--text);
     letter-spacing: 0.02em;
   }
- 
+
   .nav-logo-text span { color: var(--accent); }
- 
+
   .nav-links {
     display: flex;
     gap: 36px;
     list-style: none;
   }
- 
+
   .nav-links a {
     font-size: 11px;
     letter-spacing: 0.14em;
@@ -97,9 +97,9 @@
     text-decoration: none;
     transition: color 0.2s;
   }
- 
+
   .nav-links a:hover { color: var(--text); }
- 
+
   .nav-cta {
     font-size: 11px;
     letter-spacing: 0.1em;
@@ -111,9 +111,9 @@
     border-radius: 2px;
     transition: background 0.2s, color 0.2s;
   }
- 
+
   .nav-cta:hover { background: var(--accent); color: #fff; }
- 
+
   /* HERO */
   .hero {
     position: relative;
@@ -126,7 +126,7 @@
     max-width: 1100px;
     margin: 0 auto;
   }
- 
+
   .hero-eyebrow {
     font-size: 11px;
     letter-spacing: 0.2em;
@@ -137,7 +137,7 @@
     align-items: center;
     gap: 12px;
   }
- 
+
   .hero-eyebrow::before {
     content: '';
     display: block;
@@ -145,7 +145,7 @@
     height: 1px;
     background: var(--accent);
   }
- 
+
   .hero-name {
     font-family: var(--serif);
     font-size: clamp(52px, 8vw, 96px);
@@ -155,12 +155,12 @@
     color: var(--text);
     margin-bottom: 8px;
   }
- 
+
   .hero-name em {
     font-style: italic;
     color: var(--text2);
   }
- 
+
   .hero-tagline {
     font-family: var(--serif);
     font-size: clamp(18px, 2.5vw, 26px);
@@ -172,14 +172,14 @@
     border-left: 2px solid var(--accent-dim);
     padding-left: 20px;
   }
- 
+
   .hero-actions {
     display: flex;
     gap: 16px;
     align-items: center;
     flex-wrap: wrap;
   }
- 
+
   .btn-primary {
     font-family: var(--mono);
     font-size: 11px;
@@ -195,9 +195,9 @@
     transition: background 0.2s;
     display: inline-block;
   }
- 
+
   .btn-primary:hover { background: var(--accent2); }
- 
+
   .btn-ghost {
     font-family: var(--mono);
     font-size: 11px;
@@ -213,9 +213,9 @@
     transition: border-color 0.2s, color 0.2s;
     display: inline-block;
   }
- 
+
   .btn-ghost:hover { border-color: var(--text2); color: var(--text); }
- 
+
   .hero-stats {
     display: flex;
     gap: 48px;
@@ -224,7 +224,7 @@
     border-top: 1px solid var(--border);
     flex-wrap: wrap;
   }
- 
+
   .stat-num {
     font-family: var(--serif);
     font-size: 36px;
@@ -233,7 +233,7 @@
     display: block;
     line-height: 1;
   }
- 
+
   .stat-label {
     font-size: 10px;
     letter-spacing: 0.15em;
@@ -242,7 +242,7 @@
     margin-top: 6px;
     display: block;
   }
- 
+
   /* SECTIONS */
   section {
     position: relative;
@@ -251,7 +251,7 @@
     max-width: 1100px;
     margin: 0 auto;
   }
- 
+
   .section-label {
     font-size: 10px;
     letter-spacing: 0.2em;
@@ -262,7 +262,7 @@
     align-items: center;
     gap: 10px;
   }
- 
+
   .section-label::after {
     content: '';
     flex: 1;
@@ -270,7 +270,7 @@
     height: 1px;
     background: var(--accent-dim);
   }
- 
+
   .section-title {
     font-family: var(--serif);
     font-size: clamp(32px, 4vw, 52px);
@@ -279,7 +279,7 @@
     margin-bottom: 48px;
     color: var(--text);
   }
- 
+
   /* ABOUT */
   .about-grid {
     display: grid;
@@ -287,7 +287,7 @@
     gap: 60px;
     align-items: start;
   }
- 
+
   .about-body {
     font-size: 15px;
     color: var(--text2);
@@ -295,17 +295,17 @@
     font-family: var(--serif);
     font-weight: 300;
   }
- 
+
   .about-body p + p { margin-top: 20px; }
   .about-body strong { color: var(--text); font-weight: 400; }
- 
+
   .about-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     margin-top: 32px;
   }
- 
+
   .tag {
     font-size: 10px;
     letter-spacing: 0.1em;
@@ -315,14 +315,14 @@
     color: var(--text3);
     border-radius: 2px;
   }
- 
+
   .about-aside {
     border: 1px solid var(--border);
     padding: 28px;
     border-radius: 4px;
     background: var(--bg2);
   }
- 
+
   .aside-item {
     display: flex;
     justify-content: space-between;
@@ -331,11 +331,11 @@
     border-bottom: 1px solid var(--border);
     font-size: 12px;
   }
- 
+
   .aside-item:last-child { border-bottom: none; }
   .aside-key { color: var(--text3); letter-spacing: 0.08em; }
   .aside-val { color: var(--text); text-align: right; max-width: 180px; }
- 
+
   /* SERVICES */
   .services-grid {
     display: grid;
@@ -346,15 +346,15 @@
     border-radius: 4px;
     overflow: hidden;
   }
- 
+
   .service-card {
     background: var(--bg);
     padding: 36px 32px;
     transition: background 0.2s;
   }
- 
+
   .service-card:hover { background: var(--bg2); }
- 
+
   .service-num {
     font-size: 11px;
     letter-spacing: 0.15em;
@@ -362,7 +362,7 @@
     margin-bottom: 20px;
     display: block;
   }
- 
+
   .service-title {
     font-family: var(--serif);
     font-size: 22px;
@@ -371,20 +371,20 @@
     margin-bottom: 14px;
     line-height: 1.2;
   }
- 
+
   .service-body {
     font-size: 13px;
     color: var(--text2);
     line-height: 1.7;
   }
- 
+
   .service-tools {
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
   }
- 
+
   .tool-pill {
     font-size: 9px;
     letter-spacing: 0.1em;
@@ -395,7 +395,7 @@
     color: var(--text3);
     border-radius: 2px;
   }
- 
+
   /* AVAILABILITY NOTICE */
   .availability-bar {
     position: relative;
@@ -404,7 +404,7 @@
     margin: 0 auto;
     padding: 0 60px;
   }
- 
+
   .availability-notice {
     border: 1px solid #e6a817;
     background: rgba(230,168,23,0.06);
@@ -415,12 +415,12 @@
     letter-spacing: 0.04em;
     line-height: 1.6;
   }
- 
+
   .availability-notice strong { color: #e6a817; }
- 
+
   /* PROCESS */
   .process-list { display: flex; flex-direction: column; }
- 
+
   .process-item {
     display: grid;
     grid-template-columns: 60px 1fr;
@@ -429,9 +429,9 @@
     border-bottom: 1px solid var(--border);
     align-items: start;
   }
- 
+
   .process-item:first-child { border-top: 1px solid var(--border); }
- 
+
   .process-num {
     font-family: var(--serif);
     font-size: 42px;
@@ -440,7 +440,7 @@
     line-height: 1;
     padding-top: 4px;
   }
- 
+
   .process-content-title {
     font-family: var(--serif);
     font-size: 20px;
@@ -448,14 +448,14 @@
     color: var(--text);
     margin-bottom: 8px;
   }
- 
+
   .process-content-body {
     font-size: 13px;
     color: var(--text2);
     line-height: 1.7;
     max-width: 540px;
   }
- 
+
   /* CONTACT */
   .contact-wrap {
     border: 1px solid var(--border);
@@ -467,7 +467,7 @@
     gap: 60px;
     align-items: center;
   }
- 
+
   .contact-intro {
     font-family: var(--serif);
     font-size: 18px;
@@ -475,16 +475,16 @@
     color: var(--text2);
     line-height: 1.6;
   }
- 
+
   .contact-intro strong { color: var(--text); font-weight: 400; }
- 
+
   .contact-details {
     margin-top: 36px;
     display: flex;
     flex-direction: column;
     gap: 12px;
   }
- 
+
   .contact-detail-label {
     font-size: 10px;
     color: var(--text3);
@@ -492,7 +492,7 @@
     text-transform: uppercase;
     margin-bottom: 6px;
   }
- 
+
   .contact-link {
     color: #7eb8f7;
     text-decoration: none;
@@ -500,16 +500,16 @@
     letter-spacing: 0.04em;
     transition: color 0.2s;
   }
- 
+
   .contact-link:hover { color: var(--text); }
- 
+
   .contact-meta {
     font-size: 12px;
     color: var(--text3);
   }
- 
+
   .contact-form { display: flex; flex-direction: column; gap: 12px; }
- 
+
   .form-input {
     width: 100%;
     background: var(--bg);
@@ -522,11 +522,11 @@
     outline: none;
     transition: border-color 0.2s;
   }
- 
+
   .form-input::placeholder { color: var(--text3); }
   .form-input:focus { border-color: var(--accent); }
   textarea.form-input { resize: vertical; min-height: 100px; }
- 
+
   /* FOOTER */
   footer {
     position: relative;
@@ -538,11 +538,11 @@
     justify-content: space-between;
     max-width: 100%;
   }
- 
+
   .footer-copy { font-size: 11px; color: var(--text3); letter-spacing: 0.06em; }
- 
+
   .footer-links { display: flex; gap: 28px; }
- 
+
   .footer-links a {
     font-size: 11px;
     color: var(--text3);
@@ -551,21 +551,21 @@
     text-transform: uppercase;
     transition: color 0.2s;
   }
- 
+
   .footer-links a:hover { color: var(--accent); }
- 
+
   /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
- 
+
   .hero-eyebrow { animation: fadeUp 0.6s ease both; animation-delay: 0.1s; }
   .hero-name    { animation: fadeUp 0.7s ease both; animation-delay: 0.2s; }
   .hero-tagline { animation: fadeUp 0.7s ease both; animation-delay: 0.35s; }
   .hero-actions { animation: fadeUp 0.7s ease both; animation-delay: 0.5s; }
   .hero-stats   { animation: fadeUp 0.7s ease both; animation-delay: 0.65s; }
- 
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 16px 24px; }
@@ -579,7 +579,7 @@
 </style>
 </head>
 <body>
- 
+
 <nav>
   <a href="#" class="nav-logo">
     <svg width="28" height="34" viewBox="0 0 28 34" xmlns="http://www.w3.org/2000/svg">
@@ -601,7 +601,7 @@
   </ul>
   <a href="#contact" class="nav-cta">Get in touch</a>
 </nav>
- 
+
 <div class="hero">
   <span class="hero-eyebrow">Available for freelance work</span>
   <h1 class="hero-name">Mario<br><em>Gallegos</em></h1>
@@ -631,13 +631,13 @@
     </div>
   </div>
 </div>
- 
+
 <div class="availability-bar">
   <div class="availability-notice">
     <strong>Availability notice:</strong> Future Labs LLC maintains full-time employment. Support and project responses are provided during available hours — typically evenings (6–9pm CT) and weekends. Critical issues are addressed within 24 hours.
   </div>
 </div>
- 
+
 <section id="about">
   <div class="section-label">Background</div>
   <h2 class="section-title">Built on discipline.<br>Powered by data.</h2>
@@ -690,25 +690,13 @@
     </div>
   </div>
 </section>
- 
+
 <section id="services">
   <div class="section-label">What I build</div>
   <h2 class="section-title">Services</h2>
   <div class="services-grid">
     <div class="service-card">
       <span class="service-num">01</span>
-      <div class="service-title">Custom Dashboards</div>
-      <p class="service-body">Data dashboards built around what your business actually needs to see. Whether it's sales numbers, inventory, or operational metrics — I build views that surface the right information without the noise.</p>
-      <div class="service-tools">
-        <span class="tool-pill">Web App</span>
-        <span class="tool-pill">Firebase</span>
-        <span class="tool-pill">React</span>
-        <span class="tool-pill">Real-time Data</span>
-        <span class="tool-pill">Custom Reports</span>
-      </div>
-    </div>
-    <div class="service-card">
-      <span class="service-num">02</span>
       <div class="service-title">Custom App Development</div>
       <p class="service-body">Purpose-built mobile and web apps for small businesses. No bloated subscriptions — you get an app designed around your exact workflow, with ongoing support that keeps it running.</p>
       <div class="service-tools">
@@ -720,8 +708,8 @@
       </div>
     </div>
     <div class="service-card">
-      <span class="service-num">03</span>
-      <div class="service-title">Data Integration</div>
+      <span class="service-num">02</span>
+      <div class="service-title">Data Integration & Dashboards</div>
       <p class="service-body">Connecting systems that weren't designed to talk to each other. From deduplication logic to cross-platform reporting, I build the bridge between your data sources and your decision-makers.</p>
       <div class="service-tools">
         <span class="tool-pill">Data Pipelines</span>
@@ -732,7 +720,7 @@
     </div>
   </div>
 </section>
- 
+
 <section id="process">
   <div class="section-label">How I work</div>
   <h2 class="section-title">The process</h2>
@@ -767,7 +755,7 @@
     </div>
   </div>
 </section>
- 
+
 <section id="contact">
   <div class="section-label">Let's talk</div>
   <h2 class="section-title">Start a project</h2>
@@ -793,7 +781,7 @@
     </form>
   </div>
 </section>
- 
+
 <footer>
   <span class="footer-copy">&copy; 2026 Future Labs LLC &nbsp;·&nbsp; El Paso, TX &nbsp;·&nbsp; Veteran-Owned</span>
   <div class="footer-links">
@@ -802,7 +790,7 @@
     <a href="#contact">Contact</a>
   </div>
 </footer>
- 
+
 <script>
   function handleSubmit(e) {
     e.preventDefault();
@@ -817,7 +805,7 @@
       e.target.reset();
     }, 3000);
   }
- 
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -826,7 +814,7 @@
       }
     });
   }, { threshold: 0.1 });
- 
+
   document.querySelectorAll('.service-card, .process-item, .about-aside').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(16px)';
