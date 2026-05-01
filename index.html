@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future Labs LLC — Data Integration, Automation & App Development</title>
+<meta name="description" content="Future Labs LLC — Custom app development and workflow automation for small businesses. Based in El Paso, TX. Veteran-owned.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080c12;
+    --bg2: #0d1420;
+    --bg3: #111a28;
+    --border: #1a2a3e;
+    --border2: #213347;
+    --accent: #2a6dd9;
+    --accent2: #1a4fa0;
+    --accent-dim: #1e3a5f;
+    --text: #dce8f5;
+    --text2: #7a96b8;
+    --text3: #3d5470;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --mono: 'DM Mono', 'Courier New', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 60px;
+    background: rgba(8,12,18,0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .nav-logo svg { flex-shrink: 0; }
+
+  .nav-logo-text {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo-text span { color: var(--accent); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--accent); color: #fff; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--text2);
+  }
+
+  .hero-tagline {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 300;
+    color: var(--text2);
+    margin: 28px 0 48px;
+    max-width: 560px;
+    line-height: 1.5;
+    border-left: 2px solid var(--accent-dim);
+    padding-left: 20px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--accent2); }
+
+  .btn-ghost {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--text2);
+    border: 1px solid var(--border2);
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { border-color: var(--text2); color: var(--text); }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--text);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-top: 6px;
+    display: block;
+  }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 40px;
+    height: 1px;
+    background: var(--accent-dim);
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 48px;
+    color: var(--text);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-body {
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.8;
+    font-family: var(--serif);
+    font-weight: 300;
+  }
+
+  .about-body p + p { margin-top: 20px; }
+  .about-body strong { color: var(--text); font-weight: 400; }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  .tag {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid var(--border2);
+    color: var(--text3);
+    border-radius: 2px;
+  }
+
+  .about-aside {
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 4px;
+    background: var(--bg2);
+  }
+
+  .aside-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+  }
+
+  .aside-item:last-child { border-bottom: none; }
+  .aside-key { color: var(--text3); letter-spacing: 0.08em; }
+  .aside-val { color: var(--text); text-align: right; max-width: 180px; }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--bg);
+    padding: 36px 32px;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover { background: var(--bg2); }
+
+  .service-num {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .service-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .service-body {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+  }
+
+  .service-tools {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tool-pill {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: var(--text3);
+    border-radius: 2px;
+  }
+
+  /* AVAILABILITY NOTICE */
+  .availability-bar {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .availability-notice {
+    border: 1px solid #e6a817;
+    background: rgba(230,168,23,0.06);
+    border-radius: 4px;
+    padding: 16px 24px;
+    font-size: 12px;
+    color: #c49010;
+    letter-spacing: 0.04em;
+    line-height: 1.6;
+  }
+
+  .availability-notice strong { color: #e6a817; }
+
+  /* PROCESS */
+  .process-list { display: flex; flex-direction: column; }
+
+  .process-item {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: start;
+  }
+
+  .process-item:first-child { border-top: 1px solid var(--border); }
+
+  .process-num {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--border2);
+    line-height: 1;
+    padding-top: 4px;
+  }
+
+  .process-content-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .process-content-body {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    max-width: 540px;
+  }
+
+  /* CONTACT */
+  .contact-wrap {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--bg2);
+    padding: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .contact-intro {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+
+  .contact-intro strong { color: var(--text); font-weight: 400; }
+
+  .contact-details {
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .contact-detail-label {
+    font-size: 10px;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .contact-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--text); }
+
+  .contact-meta {
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 12px; }
+
+  .form-input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    padding: 12px 16px;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-input::placeholder { color: var(--text3); }
+  .form-input:focus { border-color: var(--accent); }
+  textarea.form-input { resize: vertical; min-height: 100px; }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--border);
+    padding: 36px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+
+  .footer-copy { font-size: 11px; color: var(--text3); letter-spacing: 0.06em; }
+
+  .footer-links { display: flex; gap: 28px; }
+
+  .footer-links a {
+    font-size: 11px;
+    color: var(--text3);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; animation-delay: 0.1s; }
+  .hero-name    { animation: fadeUp 0.7s ease both; animation-delay: 0.2s; }
+  .hero-tagline { animation: fadeUp 0.7s ease both; animation-delay: 0.35s; }
+  .hero-actions { animation: fadeUp 0.7s ease both; animation-delay: 0.5s; }
+  .hero-stats   { animation: fadeUp 0.7s ease both; animation-delay: 0.65s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero, section { padding: 60px 24px; }
+    .availability-bar { padding: 0 24px; }
+    .about-grid, .contact-wrap { grid-template-columns: 1fr; gap: 36px; }
+    .contact-wrap { padding: 32px 24px; }
+    footer { flex-direction: column; gap: 16px; padding: 28px 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="28" height="34" viewBox="0 0 28 34" xmlns="http://www.w3.org/2000/svg">
+      <rect x="1" y="1" width="26" height="32" rx="5" fill="#1a3a6b"/>
+      <rect x="1" y="1" width="26" height="32" rx="5" fill="none" stroke="#2a6dd9" stroke-width="1"/>
+      <line x1="7" y1="9" x2="21" y2="9" stroke="#2a6dd9" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="7" y1="9" x2="7" y2="18" stroke="#2a6dd9" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="7" y1="18" x2="18" y2="18" stroke="#4a7fd4" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="7" y1="25" x2="16" y2="25" stroke="#4a7fd4" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="21" cy="25" r="2.5" fill="#2a6dd9"/>
+    </svg>
+    <span class="nav-logo-text">Future Labs<span>.</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">Available for freelance work</span>
+  <h1 class="hero-name">Mario<br><em>Gallegos</em></h1>
+  <p class="hero-tagline">
+    Seven years sharpening precision on the flight line. Now I apply that same discipline to automating workflows, connecting data systems, and building apps that actually work.
+  </p>
+  <div class="hero-actions">
+    <a href="#services" class="btn-primary">See what I do</a>
+    <a href="#contact" class="btn-ghost">Start a project</a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <span class="stat-num">7</span>
+      <span class="stat-label">Years USAF</span>
+    </div>
+    <div>
+      <span class="stat-num">F-16</span>
+      <span class="stat-label">Crew Chief</span>
+    </div>
+    <div>
+      <span class="stat-num">FAA</span>
+      <span class="stat-label">Part 107 Certified</span>
+    </div>
+    <div>
+      <span class="stat-num">ERAU</span>
+      <span class="stat-label">UAS Engineering</span>
+    </div>
+  </div>
+</div>
+
+<div class="availability-bar">
+  <div class="availability-notice">
+    <strong>Availability notice:</strong> Future Labs LLC maintains full-time federal employment. Support and project responses are provided during available hours — typically evenings (6–9pm CT) and weekends. Critical issues are addressed within 24 hours.
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-label">Background</div>
+  <h2 class="section-title">Built on discipline.<br>Powered by data.</h2>
+  <div class="about-grid">
+    <div>
+      <div class="about-body">
+        <p>I'm a <strong>Data Integration & Automation Specialist</strong> working in federal grants management, where I design and build systems that reduce manual work and surface the right information at the right time.</p>
+        <p>Before that, I spent seven years as an <strong>F-16 crew chief</strong> in the U.S. Air Force — finishing as NCO of the Year — where I learned that precision, documentation, and getting it right the first time are not optional.</p>
+        <p>Today I combine that mindset with the <strong>Microsoft Power Platform</strong> to build workflow automations, data pipelines, and custom apps for organizations that need their systems to actually talk to each other.</p>
+        <p>On the side, I build <strong>custom mobile and web apps</strong> for small businesses who need something purpose-built — not a bloated SaaS subscription they'll pay for forever.</p>
+      </div>
+      <div class="about-tags">
+        <span class="tag">U.S. Air Force Veteran</span>
+        <span class="tag">NCO of the Year</span>
+        <span class="tag">FAA Part 107</span>
+        <span class="tag">ERAU — UAS Engineering</span>
+        <span class="tag">Veteran-Owned LLC</span>
+        <span class="tag">El Paso, TX</span>
+        <span class="tag">Remote Friendly</span>
+      </div>
+    </div>
+    <div class="about-aside">
+      <div class="aside-item">
+        <span class="aside-key">Specialization</span>
+        <span class="aside-val">Power Platform & App Dev</span>
+      </div>
+      <div class="aside-item">
+        <span class="aside-key">Stack</span>
+        <span class="aside-val">Power Apps, Power Automate, SharePoint, Power BI, React Native, Firebase</span>
+      </div>
+      <div class="aside-item">
+        <span class="aside-key">Freelance model</span>
+        <span class="aside-val">Free app build, paid maintenance</span>
+      </div>
+      <div class="aside-item">
+        <span class="aside-key">Education</span>
+        <span class="aside-val">B.S. Unmanned Systems, ERAU</span>
+      </div>
+      <div class="aside-item">
+        <span class="aside-key">Certifications</span>
+        <span class="aside-val">FAA Part 107, Grants Mgmt</span>
+      </div>
+      <div class="aside-item">
+        <span class="aside-key">Phone</span>
+        <span class="aside-val">(915) 229-6226</span>
+      </div>
+      <div class="aside-item">
+        <span class="aside-key">Availability</span>
+        <span class="aside-val">Open to new projects</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-label">What I build</div>
+  <h2 class="section-title">Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-num">01</span>
+      <div class="service-title">Power Platform Automation</div>
+      <p class="service-body">Custom workflows, forms, and data pipelines built on Microsoft's Power Platform. If your team is copying data between spreadsheets or waiting on manual approvals, I can fix that.</p>
+      <div class="service-tools">
+        <span class="tool-pill">Power Apps</span>
+        <span class="tool-pill">Power Automate</span>
+        <span class="tool-pill">SharePoint</span>
+        <span class="tool-pill">Power BI</span>
+        <span class="tool-pill">MS Forms</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">02</span>
+      <div class="service-title">Custom App Development</div>
+      <p class="service-body">Purpose-built mobile and web apps for small businesses. No bloated subscriptions — you get an app designed around your exact workflow, with ongoing support that keeps it running.</p>
+      <div class="service-tools">
+        <span class="tool-pill">React Native</span>
+        <span class="tool-pill">Firebase</span>
+        <span class="tool-pill">iOS & Android</span>
+        <span class="tool-pill">Free Build</span>
+        <span class="tool-pill">Paid Maintenance</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <span class="service-num">03</span>
+      <div class="service-title">Data Integration</div>
+      <p class="service-body">Connecting systems that weren't designed to talk to each other. From deduplication logic to cross-platform reporting, I build the bridge between your data sources and your decision-makers.</p>
+      <div class="service-tools">
+        <span class="tool-pill">Data Pipelines</span>
+        <span class="tool-pill">Dashboards</span>
+        <span class="tool-pill">Reporting</span>
+        <span class="tool-pill">Integrations</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="section-label">How I work</div>
+  <h2 class="section-title">The process</h2>
+  <div class="process-list">
+    <div class="process-item">
+      <span class="process-num">01</span>
+      <div>
+        <div class="process-content-title">Discovery call</div>
+        <p class="process-content-body">We spend 30 minutes mapping out your actual problem — not the surface symptom, but the root inefficiency. I come from an environment where a missed step grounds a jet. I take scoping seriously.</p>
+      </div>
+    </div>
+    <div class="process-item">
+      <span class="process-num">02</span>
+      <div>
+        <div class="process-content-title">Proposal & timeline</div>
+        <p class="process-content-body">You get a clear scope of work, timeline, and pricing before anything starts. No surprises, no scope creep without a conversation first.</p>
+      </div>
+    </div>
+    <div class="process-item">
+      <span class="process-num">03</span>
+      <div>
+        <div class="process-content-title">Build & iterate</div>
+        <p class="process-content-body">I build incrementally with regular check-ins. You see real progress, not a black box that opens at the deadline. Feedback is part of the process, not a disruption to it.</p>
+      </div>
+    </div>
+    <div class="process-item">
+      <span class="process-num">04</span>
+      <div>
+        <div class="process-content-title">Handoff & support</div>
+        <p class="process-content-body">Delivery includes documentation, a walkthrough, and an ongoing support agreement. I operate on a free-build / paid-maintenance model — you're not paying twice for the same thing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">Let's talk</div>
+  <h2 class="section-title">Start a project</h2>
+  <div class="contact-wrap">
+    <div>
+      <p class="contact-intro">
+        Whether you need a <strong>workflow automated</strong>, a <strong>custom app built</strong>, or just want to talk through a problem — I'm straightforward to work with and easy to reach.
+      </p>
+      <div class="contact-details">
+        <div class="contact-detail-label">Direct contact</div>
+        <a href="mailto:mario@futurelabs.llc" class="contact-link">mario@futurelabs.llc</a>
+        <a href="tel:9152296226" class="contact-link">(915) 229-6226</a>
+        <a href="https://futurelabs.llc" class="contact-link">futurelabs.llc</a>
+        <span class="contact-meta">El Paso, TX &nbsp;·&nbsp; Remote friendly &nbsp;·&nbsp; US & Mexico</span>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <input type="text" class="form-input" placeholder="Your name" required />
+      <input type="email" class="form-input" placeholder="Email address" required />
+      <input type="text" class="form-input" placeholder="What do you need built?" />
+      <textarea class="form-input" placeholder="Tell me more about the project..."></textarea>
+      <button type="submit" class="btn-primary" style="width:100%;cursor:pointer;border:none;">Send message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">&copy; 2026 Future Labs LLC &nbsp;·&nbsp; El Paso, TX &nbsp;·&nbsp; Veteran-Owned</span>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Message sent';
+    btn.style.background = '#0f6e56';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send message';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .process-item, .about-aside').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
