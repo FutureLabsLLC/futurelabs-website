@@ -12,10 +12,10 @@
 
   :root {
     --bg: #0d1b2e;
---bg2: #112237;
---bg3: #152a44;
---border: #1e3450;
---border2: #254060;
+    --bg2: #112237;
+    --bg3: #152a44;
+    --border: #1e3450;
+    --border2: #254060;
     --accent: #2a6dd9;
     --accent2: #1a4fa0;
     --accent-dim: #1e3a5f;
@@ -594,12 +594,15 @@
     <span class="nav-logo-text">Future Labs<span>.</span></span>
   </a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about" data-i18n="nav_about">About</a></li>
+    <li><a href="#services" data-i18n="nav_services">Services</a></li>
+    <li><a href="#process" data-i18n="nav_process">Process</a></li>
+    <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Get in touch</a>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button id="lang-toggle" onclick="toggleLang()" style="font-family:var(--mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:7px 14px;background:transparent;color:var(--text2);border:1px solid var(--border2);border-radius:2px;cursor:pointer;transition:all 0.2s;">ES</button>
+    <a href="#contact" class="nav-cta" data-i18n="nav_cta">Get in touch</a>
+  </div>
 </nav>
 
 <div class="hero">
@@ -792,14 +795,185 @@
 </footer>
 
 <script>
+  const translations = {
+    en: {
+      nav_about: 'About', nav_services: 'Services', nav_process: 'Process',
+      nav_contact: 'Contact', nav_cta: 'Get in touch',
+      hero_eyebrow: 'Available for freelance work',
+      hero_tagline: 'Seven years sharpening precision on the flight line. Now I apply that same discipline to automating workflows, connecting data systems, and building apps that actually work.',
+      hero_btn1: 'See what I do', hero_btn2: 'Start a project',
+      stat1: 'Years USAF', stat2: 'Crew Chief', stat3: 'Part 107 Certified', stat4: 'UAS Engineering',
+      avail_notice: '<strong>Availability notice:</strong> Future Labs LLC maintains full-time employment. Support and project responses are provided during available hours — typically evenings (6–9pm CT) and weekends. Critical issues are addressed within 24 hours.',
+      about_label: 'Background',
+      about_title: 'Built on discipline.<br>Powered by data.',
+      about_p1: 'I\'m a <strong>software developer and automation specialist</strong> focused on building custom apps and dashboards that help small businesses run cleaner and move faster.',
+      about_p2: 'Before this, I spent seven years as an <strong>F-16 crew chief</strong> in the U.S. Air Force — where I learned that precision, documentation, and getting it right the first time are not optional.',
+      about_p3: 'I carry that same standard into every project. If your team is doing things manually that a well-built app could handle, I want to fix that.',
+      about_p4: 'On the side, I build <strong>custom mobile and web apps</strong> for small businesses who need something purpose-built — not a bloated SaaS subscription they\'ll pay for forever.',
+      tag1: 'U.S. Air Force Veteran', tag2: 'FAA Part 107', tag3: 'ERAU — UAS Engineering',
+      tag4: 'Veteran-Owned LLC', tag5: 'El Paso, TX', tag6: 'Remote Friendly',
+      aside_spec_key: 'Specialization', aside_spec_val: 'Mobile & Web App Development',
+      aside_stack_key: 'Stack', aside_stack_val: 'React Native, Firebase, iOS & Android, Custom Dashboards',
+      aside_model_key: 'Freelance model', aside_model_val: 'Free app build, paid maintenance',
+      aside_edu_key: 'Education', aside_edu_val: 'B.S. Unmanned Systems, ERAU',
+      aside_cert_key: 'Certifications', aside_cert_val: 'FAA Part 107, Grants Mgmt',
+      aside_phone_key: 'Phone', aside_avail_key: 'Availability', aside_avail_val: 'Open to new projects',
+      svc_label: 'What I build', svc_title: 'Services',
+      svc1_title: 'Custom App Development',
+      svc1_body: 'Purpose-built mobile and web apps for small businesses. No bloated subscriptions — you get an app designed around your exact workflow, with ongoing support that keeps it running.',
+      svc2_title: 'Data Integration & Dashboards',
+      svc2_body: 'Connecting systems that weren\'t designed to talk to each other. From deduplication logic to cross-platform reporting, I build the bridge between your data sources and your decision-makers.',
+      proc_label: 'How I work', proc_title: 'The process',
+      proc1_title: 'Discovery call',
+      proc1_body: 'We spend 30 minutes mapping out your actual problem — not the surface symptom, but the root inefficiency. I come from an environment where a missed step grounds a jet. I take scoping seriously.',
+      proc2_title: 'Proposal & timeline',
+      proc2_body: 'You get a clear scope of work, timeline, and pricing before anything starts. No surprises, no scope creep without a conversation first.',
+      proc3_title: 'Build & iterate',
+      proc3_body: 'I build incrementally with regular check-ins. You see real progress, not a black box that opens at the deadline. Feedback is part of the process, not a disruption to it.',
+      proc4_title: 'Handoff & support',
+      proc4_body: 'Delivery includes documentation, a walkthrough, and an ongoing support agreement. I operate on a free-build / paid-maintenance model — you\'re not paying twice for the same thing.',
+      contact_label: 'Let\'s talk', contact_title: 'Start a project',
+      contact_intro: 'Whether you need a <strong>custom app built</strong>, a <strong>dashboard that actually makes sense</strong>, or just want to talk through what you\'re trying to solve — reach out. I keep it simple and I don\'t disappear after the build.',
+      contact_detail_label: 'Direct contact',
+      form_name: 'Your name', form_email: 'Email address',
+      form_what: 'What do you need built?', form_more: 'Tell me more about the project...',
+      form_btn: 'Send message', form_sent: 'Message sent',
+      footer_copy: '&copy; 2026 Future Labs LLC &nbsp;·&nbsp; El Paso, TX &nbsp;·&nbsp; Veteran-Owned',
+      footer_about: 'About', footer_services: 'Services', footer_contact: 'Contact'
+    },
+    es: {
+      nav_about: 'Acerca', nav_services: 'Servicios', nav_process: 'Proceso',
+      nav_contact: 'Contacto', nav_cta: 'Contáctame',
+      hero_eyebrow: 'Disponible para proyectos freelance',
+      hero_tagline: 'Siete años afilando la precisión en la pista de vuelo. Ahora aplico esa misma disciplina para automatizar procesos, conectar sistemas y construir apps que de verdad funcionan.',
+      hero_btn1: 'Lo que hago', hero_btn2: 'Empezar un proyecto',
+      stat1: 'Años USAF', stat2: 'Crew Chief F-16', stat3: 'Certificado Part 107', stat4: 'Ing. Sistemas UAS',
+      avail_notice: '<strong>Aviso de disponibilidad:</strong> Future Labs LLC mantiene empleo de tiempo completo. Las respuestas a proyectos y soporte se dan en horarios disponibles — generalmente noches (6–9pm CT) y fines de semana. Los problemas críticos se atienden en menos de 24 horas.',
+      about_label: 'Trayectoria',
+      about_title: 'Construido con disciplina.<br>Impulsado por datos.',
+      about_p1: 'Soy <strong>desarrollador de software y especialista en automatización</strong>, enfocado en crear apps y dashboards personalizados que ayudan a los negocios pequeños a operar de forma más ágil y eficiente.',
+      about_p2: 'Antes de esto, pasé siete años como <strong>crew chief de F-16</strong> en la Fuerza Aérea de EE.UU. — donde aprendí que la precisión, la documentación y hacerlo bien a la primera no son opcionales.',
+      about_p3: 'Llevo ese mismo estándar a cada proyecto. Si tu equipo hace cosas manualmente que una buena app podría resolver, quiero ayudarte a cambiar eso.',
+      about_p4: 'Construyo <strong>apps móviles y web personalizadas</strong> para negocios pequeños que necesitan algo hecho a su medida — no una suscripción inflada de SaaS que van a pagar para siempre.',
+      tag1: 'Veterano Fuerza Aérea EE.UU.', tag2: 'FAA Part 107', tag3: 'ERAU — Ingeniería UAS',
+      tag4: 'LLC de Veterano', tag5: 'El Paso, TX', tag6: 'Trabajo Remoto',
+      aside_spec_key: 'Especialidad', aside_spec_val: 'Desarrollo de Apps Móviles y Web',
+      aside_stack_key: 'Tecnología', aside_stack_val: 'React Native, Firebase, iOS y Android, Dashboards',
+      aside_model_key: 'Modelo freelance', aside_model_val: 'App gratis, mantenimiento de paga',
+      aside_edu_key: 'Educación', aside_edu_val: 'Lic. Sistemas No Tripulados, ERAU',
+      aside_cert_key: 'Certificaciones', aside_cert_val: 'FAA Part 107',
+      aside_phone_key: 'Teléfono', aside_avail_key: 'Disponibilidad', aside_avail_val: 'Abierto a proyectos nuevos',
+      svc_label: 'Lo que construyo', svc_title: 'Servicios',
+      svc1_title: 'Desarrollo de Apps Personalizadas',
+      svc1_body: 'Apps móviles y web hechas a la medida de tu negocio. Sin suscripciones infladas — obtienes una app diseñada exactamente para tu flujo de trabajo, con soporte continuo que la mantiene funcionando.',
+      svc2_title: 'Integración de Datos y Dashboards',
+      svc2_body: 'Conecto sistemas que no fueron diseñados para comunicarse entre sí. Desde lógica de deduplicación hasta reportes multiplataforma, construyo el puente entre tus datos y quienes toman decisiones.',
+      proc_label: 'Cómo trabajo', proc_title: 'El proceso',
+      proc1_title: 'Llamada de descubrimiento',
+      proc1_body: 'Pasamos 30 minutos mapeando tu problema real — no el síntoma superficial, sino la ineficiencia de fondo. Vengo de un ambiente donde un paso en falso detiene un avión. Me tomo el alcance muy en serio.',
+      proc2_title: 'Propuesta y tiempos',
+      proc2_body: 'Recibes un alcance claro, tiempos y precios antes de que empiece cualquier cosa. Sin sorpresas ni cambios de alcance sin antes platicar.',
+      proc3_title: 'Construcción e iteración',
+      proc3_body: 'Construyo de forma incremental con revisiones periódicas. Ves avance real, no una caja negra que se abre hasta la fecha de entrega. El feedback es parte del proceso, no una interrupción.',
+      proc4_title: 'Entrega y soporte',
+      proc4_body: 'La entrega incluye documentación, un recorrido explicativo y un acuerdo de soporte continuo. Trabajo con el modelo de app gratis / mantenimiento de paga — no pagas dos veces por lo mismo.',
+      contact_label: 'Platicamos', contact_title: 'Empieza un proyecto',
+      contact_intro: 'Si necesitas una <strong>app personalizada</strong>, un <strong>dashboard que tenga sentido</strong>, o simplemente quieres platicar sobre lo que estás tratando de resolver — escríbeme. Lo mantengo simple y no desaparezco después de la entrega.',
+      contact_detail_label: 'Contacto directo',
+      form_name: 'Tu nombre', form_email: 'Correo electrónico',
+      form_what: '¿Qué necesitas construir?', form_more: 'Cuéntame más sobre el proyecto...',
+      form_btn: 'Enviar mensaje', form_sent: 'Mensaje enviado',
+      footer_copy: '&copy; 2026 Future Labs LLC &nbsp;·&nbsp; El Paso, TX &nbsp;·&nbsp; Empresa de Veterano',
+      footer_about: 'Acerca', footer_services: 'Servicios', footer_contact: 'Contacto'
+    }
+  };
+
+  let currentLang = 'en';
+
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'es' : 'en';
+    applyLang(currentLang);
+    document.getElementById('lang-toggle').textContent = currentLang === 'en' ? 'ES' : 'EN';
+  }
+
+  function applyLang(lang) {
+    const t = translations[lang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key]) el.textContent = t[key];
+    });
+    const navCta = document.querySelector('.nav-cta');
+    if (navCta) navCta.textContent = t.nav_cta;
+    document.querySelector('.hero-eyebrow').textContent = t.hero_eyebrow;
+    document.querySelector('.hero-tagline').textContent = t.hero_tagline;
+    document.querySelectorAll('.hero-actions a')[0].textContent = t.hero_btn1;
+    document.querySelectorAll('.hero-actions a')[1].textContent = t.hero_btn2;
+    const statLabels = document.querySelectorAll('.stat-label');
+    statLabels[0].textContent = t.stat1;
+    statLabels[1].textContent = t.stat2;
+    statLabels[2].textContent = t.stat3;
+    statLabels[3].textContent = t.stat4;
+    document.querySelector('.availability-notice').innerHTML = t.avail_notice;
+    document.querySelectorAll('.section-label')[0].innerHTML = t.about_label;
+    document.querySelectorAll('.section-title')[0].innerHTML = t.about_title;
+    const aboutPs = document.querySelectorAll('.about-body p');
+    aboutPs[0].innerHTML = t.about_p1;
+    aboutPs[1].innerHTML = t.about_p2;
+    aboutPs[2].innerHTML = t.about_p3;
+    aboutPs[3].innerHTML = t.about_p4;
+    const tags = document.querySelectorAll('.tag');
+    [t.tag1,t.tag2,t.tag3,t.tag4,t.tag5,t.tag6].forEach((txt,i) => { if(tags[i]) tags[i].textContent = txt; });
+    const asideKeys = document.querySelectorAll('.aside-key');
+    const asideVals = document.querySelectorAll('.aside-val');
+    asideKeys[0].textContent = t.aside_spec_key; asideVals[0].textContent = t.aside_spec_val;
+    asideKeys[1].textContent = t.aside_stack_key; asideVals[1].textContent = t.aside_stack_val;
+    asideKeys[2].textContent = t.aside_model_key; asideVals[2].textContent = t.aside_model_val;
+    asideKeys[3].textContent = t.aside_edu_key; asideVals[3].textContent = t.aside_edu_val;
+    asideKeys[4].textContent = t.aside_cert_key; asideVals[4].textContent = t.aside_cert_val;
+    asideKeys[5].textContent = t.aside_phone_key;
+    asideKeys[6].textContent = t.aside_avail_key; asideVals[6].textContent = t.aside_avail_val;
+    document.querySelectorAll('.section-label')[1].textContent = t.svc_label;
+    document.querySelectorAll('.section-title')[1].textContent = t.svc_title;
+    document.querySelectorAll('.service-title')[0].textContent = t.svc1_title;
+    document.querySelectorAll('.service-body')[0].textContent = t.svc1_body;
+    document.querySelectorAll('.service-title')[1].textContent = t.svc2_title;
+    document.querySelectorAll('.service-body')[1].textContent = t.svc2_body;
+    document.querySelectorAll('.section-label')[2].textContent = t.proc_label;
+    document.querySelectorAll('.section-title')[2].textContent = t.proc_title;
+    document.querySelectorAll('.process-content-title')[0].textContent = t.proc1_title;
+    document.querySelectorAll('.process-content-body')[0].textContent = t.proc1_body;
+    document.querySelectorAll('.process-content-title')[1].textContent = t.proc2_title;
+    document.querySelectorAll('.process-content-body')[1].textContent = t.proc2_body;
+    document.querySelectorAll('.process-content-title')[2].textContent = t.proc3_title;
+    document.querySelectorAll('.process-content-body')[2].textContent = t.proc3_body;
+    document.querySelectorAll('.process-content-title')[3].textContent = t.proc4_title;
+    document.querySelectorAll('.process-content-body')[3].textContent = t.proc4_body;
+    document.querySelectorAll('.section-label')[3].textContent = t.contact_label;
+    document.querySelectorAll('.section-title')[3].innerHTML = t.contact_title;
+    document.querySelector('.contact-intro').innerHTML = t.contact_intro;
+    document.querySelector('.contact-detail-label').textContent = t.contact_detail_label;
+    document.querySelectorAll('.form-input')[0].placeholder = t.form_name;
+    document.querySelectorAll('.form-input')[1].placeholder = t.form_email;
+    document.querySelectorAll('.form-input')[2].placeholder = t.form_what;
+    document.querySelectorAll('.form-input')[3].placeholder = t.form_more;
+    const submitBtn = document.querySelector('.contact-form button[type="submit"]');
+    submitBtn.textContent = t.form_btn;
+    document.querySelector('.footer-copy').innerHTML = t.footer_copy;
+    const footerLinks = document.querySelectorAll('.footer-links a');
+    footerLinks[0].textContent = t.footer_about;
+    footerLinks[1].textContent = t.footer_services;
+    footerLinks[2].textContent = t.footer_contact;
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const btn = e.target.querySelector('button[type="submit"]');
-    btn.textContent = 'Message sent';
+    const sentText = currentLang === 'es' ? 'Mensaje enviado' : 'Message sent';
+    btn.textContent = sentText;
     btn.style.background = '#0f6e56';
     btn.disabled = true;
     setTimeout(() => {
-      btn.textContent = 'Send message';
+      btn.textContent = currentLang === 'es' ? translations.es.form_btn : translations.en.form_btn;
       btn.style.background = '';
       btn.disabled = false;
       e.target.reset();
