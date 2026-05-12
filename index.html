@@ -775,10 +775,11 @@
         <span class="contact-meta">El Paso, TX &nbsp;·&nbsp; Remote friendly &nbsp;·&nbsp; US & Mexico</span>
       </div>
     </div>
-    <form class="contact-form" onsubmit="handleSubmit(event)">
-      <input type="text" class="form-input" placeholder="Your name" required />
-      <input type="email" class="form-input" placeholder="Email address" required />
-      <input type="text" class="form-input" placeholder="What do you need built?" />
+    <form class="contact-form" name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+ <input type="text" name="name" class="form-input" placeholder="Your name" required />
+<input type="email" name="email" class="form-input" placeholder="Email address" required />
+<input type="text" name="project" class="form-input" placeholder="What do you need built?" />
+<textarea name="message" class="form-input" placeholder="Tell me more about the project..."></textarea>
       <textarea class="form-input" placeholder="Tell me more about the project..."></textarea>
       <button type="submit" class="btn-primary" style="width:100%;cursor:pointer;border:none;">Send message</button>
     </form>
