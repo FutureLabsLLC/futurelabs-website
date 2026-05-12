@@ -776,11 +776,11 @@
       </div>
     </div>
     <form class="contact-form" name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
- <input type="text" name="name" class="form-input" placeholder="Your name" required />
-<input type="email" name="email" class="form-input" placeholder="Email address" required />
-<input type="text" name="project" class="form-input" placeholder="What do you need built?" />
-<textarea name="message" class="form-input" placeholder="Tell me more about the project..."></textarea>
-     
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="name" class="form-input" placeholder="Your name" required />
+      <input type="email" name="email" class="form-input" placeholder="Email address" required />
+      <input type="text" name="project" class="form-input" placeholder="What do you need built?" />
+      <textarea name="message" class="form-input" placeholder="Tell me more about the project..."></textarea>
       <button type="submit" class="btn-primary" style="width:100%;cursor:pointer;border:none;">Send message</button>
     </form>
   </div>
@@ -968,17 +968,27 @@
 
   function handleSubmit(e) {
     e.preventDefault();
-    const btn = e.target.querySelector('button[type="submit"]');
+    const form = e.target;
+    const btn = form.querySelector('button[type="submit"]');
     const sentText = currentLang === 'es' ? 'Mensaje enviado' : 'Message sent';
-    btn.textContent = sentText;
-    btn.style.background = '#0f6e56';
-    btn.disabled = true;
-    setTimeout(() => {
-      btn.textContent = currentLang === 'es' ? translations.es.form_btn : translations.en.form_btn;
-      btn.style.background = '';
-      btn.disabled = false;
-      e.target.reset();
-    }, 3000);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    })
+    .then(() => {
+      btn.textContent = sentText;
+      btn.style.background = '#0f6e56';
+      btn.disabled = true;
+      form.reset();
+      setTimeout(() => {
+        btn.textContent = currentLang === 'es' ? translations.es.form_btn : translations.en.form_btn;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(() => alert('Something went wrong. Please try again.'));
   }
 
   const observer = new IntersectionObserver((entries) => {
